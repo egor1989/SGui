@@ -49,12 +49,12 @@ app.all('/*',function(req, res, next) {
 });
 
 app.get('/', function(req, res){
-  res.render('index', { title: "Краулер. Настройка" } );
+  res.render('index', { title: "Remote Run Test" } );
 });
 
 
 app.get('/about', function(req, res){
-      res.render('about', { title: 'Краулер. Помощь' });
+      res.render('about', { title: 'Help' });
 });
 
 app.post('/start/', function(req, res, next) {
@@ -66,5 +66,5 @@ app.post('/stop/', function(req, res, next) {
 });
 
 
-app.listen(5555);
+app.listen(80);
 console.log("Express server listening on port %d in %s mode", app.address().port, app.settings.env);
