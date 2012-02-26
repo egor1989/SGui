@@ -1,0 +1,73 @@
+#main_view {
+  margin-left: 100px;
+}
+#feedList {
+  height: 200px;
+  width: 200px;
+}
+#spinner {
+  width: 1000px;
+  height: 600px;
+  float: left;
+}
+#gitInputBlock {
+  float: left;
+  display: block;
+}
+#report {
+  width: 600px;
+  height: 400px;
+}
+#reports {
+  float: right;
+  font-family: 'Trebuchet MS', 'Lucida Grande', Verdana, Lucida, Geneva, Helvetica, Arial, sans-serif;
+  background-color: #90bade;
+  color: #333;
+}
+#outputBlock {
+  display: block;
+  height: 400px;
+}
+#reports ul {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  border: none;
+}
+#reports li {
+  border-bottom: 1px solid #90bade;
+}
+#crowlerCondition {
+  font-size: 14pt;
+}
+#reports li a {
+  display: block;
+  background-color: #2175bc;
+  color: #fff;
+  text-decoration: none;
+}
+#bigFont {
+  font-size: 11pt;
+}
+.logo {
+  color: #434343;
+  font-style: italic;
+  font-size: 12px;
+  float: right;
+  position: relative;
+  background-image: url("/images/peacock-logo.png");
+  background-repeat: no-repeat;
+  padding-top: 7px;
+  padding-left: 35px;
+  height: 23px;
+}
+.brand {
+  background-image: url("/images/logo.png");
+  background-repeat: no-repeat;
+  width: 140px;
+  height: 20px;
+}
+#reports li a:hover {
+  background-color: #2586d7;
+  color: #fff;
+}

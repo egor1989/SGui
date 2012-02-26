@@ -1,0 +1,75 @@
+html.
+  <head>
+    <!-- Le styles -->
+    <style type="text/css">
+      body {
+        padding-top: 60px;
+      }
+    </style>
+    <script>
+      var opts = {
+        lines: 12, // The number of lines to draw
+        length: 7, // The length of each line
+        width: 5, // The line thickness
+        radius: 10, // The radius of the inner circle
+        color: '#000', // #rgb or #rrggbb
+        speed: 1, // Rounds per second
+        trail: 60, // Afterglow percentage
+        shadow: false, // Whether to render a shadow
+        hwaccel: false // Whether to use hardware acceleration
+      };
+      var spinner = new Spinner(opts).spin();
+    </script>
+    
+    <!-- Le fav and touch icons -->
+    <link rel="shortcut icon" href="images/favicon.ico">
+    <link rel="apple-touch-icon" href="images/apple-touch-icon.png">
+    <link rel="apple-touch-icon" sizes="72x72" href="images/apple-touch-icon-72x72.png">
+    <link rel="apple-touch-icon" sizes="114x114" href="images/apple-touch-icon-114x114.png">
+    <script src="js/jquery-1.7.1.min.js"></script>
+    <script src="js/spin.min.js"></script>
+  </head>
+
+  <body>
+    <div class="topbar">
+      <div class="topbar-inner">
+        <div class="container-fluid">
+          <ul class="nav">
+            <li class="active"><a href="/">Remote Run Test</a></li>
+            <li><a href="/about">Help</a></li>
+          </ul>
+        </div>
+      </div>
+    </div>
+
+        <!-- Example row of columns -->
+        <div class="row">
+          <div class="span2">&nbsp</div>
+          <div class="span2">
+            <p>&nbsp</p><p><img class="buttonImage" src="images/start.png" title="Run"  onclick="startMath()"/></p>
+          </div>
+          <div class="span5">
+            <h2>Choose file</h2>
+            <p>
+              <input type=text id="">
+            </p>
+          </div>
+          <div class="span6">
+          </div>
+        </div>
+        <div class="row">
+          <div class="span2"></div>
+          <div class="span10" id="report">
+            <h2>Report</h2>
+          </div>
+        </div>
+      </div>
+    </div>
+    <footer class="footer">
+      <div class="container">
+        <div class="pull-right">
+          Solver
+        </div>
+      </div>  
+    </footer>
+  </body>
