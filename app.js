@@ -1,13 +1,15 @@
 var child;
 var util = require("util"),
     sys = require("sys"),
+    http = require('http'),
     url = require("url"),
     express = require("express"),
     exec = require('child_process').exec,
     spawn = require('child_process').spawn,
     expose = require('express-expose'),
     querystring = require("querystring"),
-    fs = require('fs');
+    fs = require('fs'),
+    formidable = require('formidable');
 var app = module.exports = express.createServer();
 
 // Don't crash on errors.
@@ -54,17 +56,31 @@ app.get('/', function(req, res){
 
 
 app.get('/about', function(req, res){
-      res.render('about', { title: 'Help' });
+  res.render('about', { title: 'Help' });
 });
 
 app.post('/start/', function(req, res, next) {
-  startCrawl(req.body.data, res);
+  startMath(req.body.data, res);
 });
+/*
+app.post('/upload/', function(req, res, next) {
+    var form = new formidable.IncomingForm();
+    form.uploadDir = "D:\\tmp";
+});*/
 
 app.post('/stop/', function(req, res, next) {
   stopCrawl(req.body.data, res);
 });
 
+app.post('/upload', function(req, res, next){
+  // the uploaded file can be found as `req.files.image` and the
+  // title field as `req.body.title`
+  res.send(format('\nuploaded %s (%d Kb) to %s as %s'
+    , req.files.image.name
+    , req.files.image.size / 1024 | 0 
+    , req.files.image.path
+    , req.body.title));
+});
 
-app.listen(80);
+app.listen(5555);
 console.log("Express server listening on port %d in %s mode", app.address().port, app.settings.env);
