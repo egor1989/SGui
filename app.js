@@ -1,5 +1,6 @@
 var child;
-var util = require("util"),
+var format = require("util").format,
+    util = require("util"),
     sys = require("sys"),
     http = require('http'),
     url = require("url"),
@@ -75,10 +76,11 @@ app.post('/stop/', function(req, res, next) {
 app.post('/upload', function(req, res, next){
   // the uploaded file can be found as `req.files.image` and the
   // title field as `req.body.title`
+  fs.renameSync(req.files.upload.name, "data/io.txt");
   res.send(format('\nuploaded %s (%d Kb) to %s as %s'
-    , req.files.image.name
-    , req.files.image.size / 1024 | 0 
-    , req.files.image.path
+    , req.files.upload.name
+    , req.files.upload.size / 1024 | 0 
+    , req.files.upload.path
     , req.body.title));
 });
 
