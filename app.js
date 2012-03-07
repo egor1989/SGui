@@ -91,7 +91,9 @@ function startMath(req, res){
 	  console.log("Request handler START was called.");
 
       //var err/or="";
-      child = exec("C:\\\"Program Files\"\\Java\\jre7\\bin\\java.exe -jar test.jar", function (error) { 
+      //var runMath = "C:\\\"Program Files\"\\Java\\jre7\\bin\\java.exe -jar test.jar";
+	  var runMath = "java -jar test.jar;
+	  child = exec(runMath, function (error) { 
 		child.stderr.on('error', function (error) {
 			console.log(child.pid+ ' stderr: ' + error);
 			fs.writeFile('data\\errorLog.txt', error, function (err) {
