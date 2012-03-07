@@ -60,29 +60,59 @@ app.get('/about', function(req, res){
   res.render('about', { title: 'Help' });
 });
 
-app.post('/start/', function(req, res, next) {
-  startMath(req.body.data, res);
+app.post('/refresh', function(req, res, next) {
+  refresh(req.body.data, res);
 });
-/*
-app.post('/upload/', function(req, res, next) {
-    var form = new formidable.IncomingForm();
-    form.uploadDir = "D:\\tmp";
-});*/
+
+app.post('/start/', function(req, res, next) {
+  startMath(req, res);
+});
 
 app.post('/stop/', function(req, res, next) {
-  stopCrawl(req.body.data, res);
+  stopMath(req, res);
 });
 
 app.post('/upload', function(req, res, next){
-  // the uploaded file can be found as `req.files.image` and the
-  // title field as `req.body.title`
-  fs.renameSync(req.files.upload.name, "data/io.txt");
-  res.send(format('\nuploaded %s (%d Kb) to %s as %s'
+  //fs.renameSync(req.files.upload.path, "data\\" + req.files.upload.name);
+  fs.renameSync(req.files.upload.path, "data\\in.txt");
+  console.log("Upload OK");
+  res.redirect('back');
+  /*res.send(format('\nuploaded %s (%d Kb) to %s as %s'
     , req.files.upload.name
     , req.files.upload.size / 1024 | 0 
     , req.files.upload.path
-    , req.body.title));
+    , req.body.title));*/
 });
+
+function startMath(req, res){
+	if(child != undefined){
+      child.kill();
+	  }
+	  console.log("Request handler START was called.");
+
+      //var err/or="";
+      child = exec("C:\\\"Program Files\"\\Java\\jre7\\bin\\java.exe -jar test.jar", function (error) { 
+		child.stderr.on('error', function (error) {
+			console.log(child.pid+ ' stderr: ' + error);
+			fs.writeFile('data\\errorLog.txt', error, function (err) {
+				if (err) throw err;
+				console.log('It\'s saved!');
+			});
+		});
+		
+		var log = fs.readFileSync("data\\log.txt").toString("utf8");
+		console.log(log);
+		if (error == undefined) {
+			res.send({ "log": log });
+			res.end();
+		} else {
+			res.send({ "error": error });
+			res.end();
+			console.log('error:' + error);
+		}
+    });
+	
+}
 
 app.listen(5555);
 console.log("Express server listening on port %d in %s mode", app.address().port, app.settings.env);
