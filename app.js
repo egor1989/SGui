@@ -92,7 +92,7 @@ function startMath(req, res){
 
       //var err/or="";
       //var runMath = "C:\\\"Program Files\"\\Java\\jre7\\bin\\java.exe -jar test.jar";
-	  var runMath = "java -jar test.jar;
+	  var runMath = "java -jar test.jar";
 	  child = exec(runMath, function (error) { 
 		child.stderr.on('error', function (error) {
 			console.log(child.pid+ ' stderr: ' + error);
