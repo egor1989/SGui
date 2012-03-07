@@ -75,7 +75,7 @@ app.post('/stop/', function(req, res, next) {
 
 app.post('/upload', function(req, res, next){
   //fs.renameSync(req.files.upload.path, "data\\" + req.files.upload.name);
-  fs.renameSync(req.files.upload.path, path.join("data", "in.txt");
+  fs.renameSync(req.files.upload.path, path.join("data", "in.txt"));
   console.log("Upload OK");
   res.redirect('back');
   /*res.send(format('\nuploaded %s (%d Kb) to %s as %s'
