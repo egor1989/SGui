@@ -10,6 +10,7 @@ var format = require("util").format,
     expose = require('express-expose'),
     querystring = require("querystring"),
     fs = require('fs'),
+	path = require('path'),
     formidable = require('formidable');
 var app = module.exports = express.createServer();
 
@@ -74,7 +75,7 @@ app.post('/stop/', function(req, res, next) {
 
 app.post('/upload', function(req, res, next){
   //fs.renameSync(req.files.upload.path, "data\\" + req.files.upload.name);
-  fs.renameSync(req.files.upload.path, "data\\in.txt");
+  fs.renameSync(req.files.upload.path, path.join("data", "in.txt");
   console.log("Upload OK");
   res.redirect('back');
   /*res.send(format('\nuploaded %s (%d Kb) to %s as %s'
@@ -96,13 +97,13 @@ function startMath(req, res){
 	  child = exec(runMath, function (error) { 
 		child.stderr.on('error', function (error) {
 			console.log(child.pid+ ' stderr: ' + error);
-			fs.writeFile('data\\errorLog.txt', error, function (err) {
+			fs.writeFile(path.join('data','errorLog.txt'), error, function (err) {
 				if (err) throw err;
 				console.log('It\'s saved!');
 			});
 		});
 		
-		var log = fs.readFileSync("data\\log.txt").toString("utf8");
+		var log = fs.readFileSync(path.join("data", "log.txt")).toString("utf8");
 		console.log(log);
 		if (error == undefined) {
 			res.send({ "log": log });
